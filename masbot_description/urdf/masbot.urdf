@@ -1,0 +1,347 @@
+<?xml version="1.0"?>
+<robot name="masbot">
+  <!-- Robot dimensions from photographs and measurements -->
+  <!-- Base is 9.5cm off ground, 53cm length, 20.75cm width -->
+  <!-- Total height is 118cm from base -->
+  <!-- Track width 28cm, track length 55cm -->
+
+  <!-- Colors -->
+  <material name="aluminum">
+    <color rgba="0.8 0.8 0.8 1.0"/>
+  </material>
+  <material name="black">
+    <color rgba="0.1 0.1 0.1 1.0"/>
+  </material>
+  <material name="blue">
+    <color rgba="0.0 0.0 0.8 1.0"/>
+  </material>
+  <material name="silver">
+    <color rgba="0.75 0.75 0.75 1.0"/>
+  </material>
+  <material name="white">
+    <color rgba="1.0 1.0 1.0 1.0"/>
+  </material>
+
+  <!-- Base Link - The primary reference frame for the robot -->
+  <link name="base_link">
+    <visual>
+      <geometry>
+        <box size="0.53 0.2075 0.01"/>
+      </geometry>
+      <material name="silver"/>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.53 0.2075 0.01"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="4.0"/>
+      <inertia ixx="0.1" ixy="0.0" ixz="0.0" iyy="0.1" iyz="0.0" izz="0.1"/>
+    </inertial>
+  </link>
+
+  <!-- Base Footprint - A projection of the robot onto the ground plane -->
+  <link name="base_footprint"/>
+  <joint name="base_footprint_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="base_footprint"/>
+    <origin xyz="0 0 -0.095" rpy="0 0 0"/>
+  </joint>
+
+  <!-- Chassis - The main body/platform of the robot -->
+  <link name="chassis_link">
+    <visual>
+      <geometry>
+        <box size="0.53 0.2075 0.02"/>
+      </geometry>
+      <material name="silver"/>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.53 0.2075 0.02"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="chassis_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="chassis_link"/>
+    <origin xyz="0 0 -0.01" rpy="0 0 0"/>
+  </joint>
+
+  <!-- Left Track Assembly -->
+  <link name="left_track_assembly">
+    <visual>
+      <geometry>
+        <!-- Overall shape for visualization -->
+        <box size="0.55 0.04 0.06"/>
+      </geometry>
+      <material name="silver"/>
+    </visual>
+  </link>
+  <joint name="left_track_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="left_track_assembly"/>
+    <origin xyz="0 0.14 -0.05" rpy="0 0 0"/>
+  </joint>
+
+  <!-- Right Track Assembly -->
+  <link name="right_track_assembly">
+    <visual>
+      <geometry>
+        <!-- Overall shape for visualization -->
+        <box size="0.55 0.04 0.06"/>
+      </geometry>
+      <material name="silver"/>
+    </visual>
+  </link>
+  <joint name="right_track_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="right_track_assembly"/>
+    <origin xyz="0 -0.14 -0.05" rpy="0 0 0"/>
+  </joint>
+
+  <!-- Left Front Sprocket (with encoder) -->
+  <link name="left_front_sprocket">
+    <visual>
+      <geometry>
+        <cylinder length="0.03" radius="0.025"/>
+      </geometry>
+      <material name="silver"/>
+    </visual>
+  </link>
+  <joint name="left_front_sprocket_joint" type="continuous">
+    <parent link="left_track_assembly"/>
+    <child link="left_front_sprocket"/>
+    <origin xyz="0.225 0 0" rpy="1.5708 0 0"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+
+  <!-- Right Front Sprocket (with encoder) -->
+  <link name="right_front_sprocket">
+    <visual>
+      <geometry>
+        <cylinder length="0.03" radius="0.025"/>
+      </geometry>
+      <material name="silver"/>
+    </visual>
+  </link>
+  <joint name="right_front_sprocket_joint" type="continuous">
+    <parent link="right_track_assembly"/>
+    <child link="right_front_sprocket"/>
+    <origin xyz="0.225 0 0" rpy="1.5708 0 0"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+
+  <!-- Left Rear Sprocket -->
+  <link name="left_rear_sprocket">
+    <visual>
+      <geometry>
+        <cylinder length="0.03" radius="0.025"/>
+      </geometry>
+      <material name="silver"/>
+    </visual>
+  </link>
+  <joint name="left_rear_sprocket_joint" type="continuous">
+    <parent link="left_track_assembly"/>
+    <child link="left_rear_sprocket"/>
+    <origin xyz="-0.225 0 0" rpy="1.5708 0 0"/>
+    <axis xyz="0 0 1"/>
+    <mimic joint="left_front_sprocket_joint" multiplier="1.0" offset="0"/>
+  </joint>
+
+  <!-- Right Rear Sprocket -->
+  <link name="right_rear_sprocket">
+    <visual>
+      <geometry>
+        <cylinder length="0.03" radius="0.025"/>
+      </geometry>
+      <material name="silver"/>
+    </visual>
+  </link>
+  <joint name="right_rear_sprocket_joint" type="continuous">
+    <parent link="right_track_assembly"/>
+    <child link="right_rear_sprocket"/>
+    <origin xyz="-0.225 0 0" rpy="1.5708 0 0"/>
+    <axis xyz="0 0 1"/>
+    <mimic joint="right_front_sprocket_joint" multiplier="1.0" offset="0"/>
+  </joint>
+
+  <!-- Additional Track Wheels Left Side -->
+  <link name="left_track_wheels">
+    <visual>
+      <geometry>
+        <!-- Representing multiple wheels as a single visual element -->
+        <box size="0.45 0.03 0.01"/>
+      </geometry>
+      <material name="silver"/>
+    </visual>
+  </link>
+  <joint name="left_track_wheels_joint" type="fixed">
+    <parent link="left_track_assembly"/>
+    <child link="left_track_wheels"/>
+    <origin xyz="0 0 -0.03" rpy="0 0 0"/>
+  </joint>
+
+  <!-- Additional Track Wheels Right Side -->
+  <link name="right_track_wheels">
+    <visual>
+      <geometry>
+        <!-- Representing multiple wheels as a single visual element -->
+        <box size="0.45 0.03 0.01"/>
+      </geometry>
+      <material name="silver"/>
+    </visual>
+  </link>
+  <joint name="right_track_wheels_joint" type="fixed">
+    <parent link="right_track_assembly"/>
+    <child link="right_track_wheels"/>
+    <origin xyz="0 0 -0.03" rpy="0 0 0"/>
+  </joint>
+
+  <!-- Main Mast (Aluminum Vertical Structure) -->
+  <link name="mast_link">
+    <visual>
+      <geometry>
+        <box size="0.04 0.04 1.08"/>
+      </geometry>
+      <material name="aluminum"/>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.04 0.04 1.08"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="mast_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="mast_link"/>
+    <origin xyz="0 0 0.54" rpy="0 0 0"/>
+  </joint>
+
+  <!-- Mid Mast Point (for ultrasonic sensors) -->
+  <link name="mast_mid"/>
+  <joint name="mast_mid_joint" type="fixed">
+    <parent link="mast_link"/>
+    <child link="mast_mid"/>
+    <origin xyz="0 0 -0.28" rpy="0 0 0"/>
+  </joint>
+
+  <!-- Top Mast Point (for sensors and screen) -->
+  <link name="mast_top"/>
+  <joint name="mast_top_joint" type="fixed">
+    <parent link="mast_link"/>
+    <child link="mast_top"/>
+    <origin xyz="0 0 0.54" rpy="0 0 0"/>
+  </joint>
+
+  <!-- Ultrasonic Sensors at 26cm height, positioned around the robot -->
+  <link name="ultrasonic_front_link">
+    <visual>
+      <geometry>
+        <box size="0.04 0.02 0.02"/>
+      </geometry>
+      <material name="blue"/>
+    </visual>
+  </link>
+  <joint name="ultrasonic_front_joint" type="fixed">
+    <parent link="mast_mid"/>
+    <child link="ultrasonic_front_link"/>
+    <origin xyz="0.05 0 0" rpy="0 0 0"/>
+  </joint>
+
+  <link name="ultrasonic_left_link">
+    <visual>
+      <geometry>
+        <box size="0.02 0.04 0.02"/>
+      </geometry>
+      <material name="blue"/>
+    </visual>
+  </link>
+  <joint name="ultrasonic_left_joint" type="fixed">
+    <parent link="mast_mid"/>
+    <child link="ultrasonic_left_link"/>
+    <origin xyz="0 0.05 0" rpy="0 0 0"/>
+  </joint>
+
+  <link name="ultrasonic_right_link">
+    <visual>
+      <geometry>
+        <box size="0.02 0.04 0.02"/>
+      </geometry>
+      <material name="blue"/>
+    </visual>
+  </link>
+  <joint name="ultrasonic_right_joint" type="fixed">
+    <parent link="mast_mid"/>
+    <child link="ultrasonic_right_link"/>
+    <origin xyz="0 -0.05 0" rpy="0 0 0"/>
+  </joint>
+
+  <!-- RPLidar at the top of the mast -->
+  <link name="lidar_link">
+    <visual>
+      <geometry>
+        <cylinder length="0.04" radius="0.035"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder length="0.04" radius="0.035"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="lidar_joint" type="fixed">
+    <parent link="mast_top"/>
+    <child link="lidar_link"/>
+    <origin xyz="0 0 0.02" rpy="0 0 0"/>
+  </joint>
+
+  <!-- Camera just above the lidar -->
+  <link name="camera_link">
+    <visual>
+      <geometry>
+        <box size="0.03 0.08 0.03"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+  </link>
+  <joint name="camera_joint" type="fixed">
+    <parent link="mast_top"/>
+    <child link="camera_link"/>
+    <origin xyz="0 0 0.055" rpy="0 0 0"/>
+  </joint>
+
+  <!-- LCD Screen in portrait orientation -->
+  <link name="lcd_screen_link">
+    <visual>
+      <geometry>
+        <box size="0.01 0.15 0.2"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+  </link>
+  <joint name="lcd_screen_joint" type="fixed">
+    <parent link="mast_top"/>
+    <child link="lcd_screen_link"/>
+    <origin xyz="0.05 0 -0.1" rpy="0 0 0"/>
+  </joint>
+
+  <!-- IMU Link (MPU6050) at the center of the base -->
+  <link name="imu_link">
+    <visual>
+      <geometry>
+        <box size="0.02 0.02 0.005"/>
+      </geometry>
+      <material name="blue"/>
+    </visual>
+  </link>
+  <joint name="imu_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="imu_link"/>
+    <origin xyz="0 0 -0.01" rpy="0 0 0"/>
+  </joint>
+
+  <!-- Gazebo plugins would be configured here -->
+</robot>

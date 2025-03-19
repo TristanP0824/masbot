@@ -1,0 +1,9 @@
+<library path="masbot_hardware_interface">
+  <class name="masbot_hardware_interface/MasbotHardwareInterface"
+         type="masbot_hardware_interface::MasbotHardwareInterface"
+         base_class_type="hardware_interface::SystemInterface">
+    <description>
+      Hardware interface for MasBot robot with differential drive and encoders on front motors.
+    </description>
+  </class>
+</library>

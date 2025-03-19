@@ -1,0 +1,53 @@
+controller_manager:
+  ros__parameters:
+    update_rate: 50  # Hz
+    use_sim_time: false
+
+    diff_drive_controller:
+      type: diff_drive_controller/DiffDriveController
+
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+
+diff_drive_controller:
+  ros__parameters:
+    # Only using the front wheels with encoders
+    left_wheel_names: ["left_front_sprocket_joint"]
+    right_wheel_names: ["right_front_sprocket_joint"]
+
+    wheel_separation: 0.28  # Track width in meters
+    wheel_radius: 0.025     # Wheel/sprocket radius in meters
+
+    # Odometry parameters
+    publish_rate: 50.0                # Odometry publishing frequency in Hz
+    odom_frame_id: odom              # Frame ID for the odometry message
+    base_frame_id: base_link         # Frame ID for the robot base
+    pose_covariance_diagonal: [0.001, 0.001, 0.001, 0.001, 0.001, 0.01]
+    twist_covariance_diagonal: [0.001, 0.001, 0.001, 0.001, 0.001, 0.01]
+
+    # Speed limiters for the tank tracks
+    linear:
+      x:
+        has_velocity_limits: true
+        max_velocity: 0.5       # m/s
+        min_velocity: -0.5      # m/s
+        has_acceleration_limits: true
+        max_acceleration: 1.0   # m/s^2
+        min_acceleration: -1.0  # m/s^2
+    angular:
+      z:
+        has_velocity_limits: true
+        max_velocity: 1.0       # rad/s
+        min_velocity: -1.0      # rad/s
+        has_acceleration_limits: true
+        max_acceleration: 1.5   # rad/s^2
+        min_acceleration: -1.5  # rad/s^2
+    
+    # Enable odometry publishing
+    publish_odom: true
+    publish_odom_tf: true
+    
+    # Additional parameters
+    open_loop: false          # Use encoder feedback rather than open-loop control
+    position_feedback: true   # Use position feedback
+    enable_odom_tf: true      # Publish odom->base_link transform

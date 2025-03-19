@@ -1,0 +1,3 @@
+[submodule "ros2_mpu_6050_driver"]
+	path = ros2_mpu_6050_driver
+	url = https://github.com/hiwad-aziz/ros2_mpu6050_driver.git
