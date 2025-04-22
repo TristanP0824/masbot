@@ -1,0 +1,2 @@
+[console_scripts]
+diff_drive_controller = diff_drive_controller.diff_drive_controller:main

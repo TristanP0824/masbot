@@ -1,0 +1,39 @@
+[3.970s] Invoking command in '/home/tristan/ros2_ws/src/diff_drive_controller': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/tristan/ros2_ws/src/diff_drive_controller/build/diff_drive_controller/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/tristan/ros2_ws/src/diff_drive_controller/install/diff_drive_controller/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base build/diff_drive_controller build --build-base /home/tristan/ros2_ws/src/diff_drive_controller/build/diff_drive_controller/build install --record /home/tristan/ros2_ws/src/diff_drive_controller/build/diff_drive_controller/install.log --single-version-externally-managed install_data
+[5.578s] running egg_info
+[5.581s] creating build/diff_drive_controller/diff_drive_controller.egg-info
+[5.652s] writing build/diff_drive_controller/diff_drive_controller.egg-info/PKG-INFO
+[5.657s] writing dependency_links to build/diff_drive_controller/diff_drive_controller.egg-info/dependency_links.txt
+[5.657s] writing entry points to build/diff_drive_controller/diff_drive_controller.egg-info/entry_points.txt
+[5.657s] writing requirements to build/diff_drive_controller/diff_drive_controller.egg-info/requires.txt
+[5.658s] writing top-level names to build/diff_drive_controller/diff_drive_controller.egg-info/top_level.txt
+[5.658s] writing manifest file 'build/diff_drive_controller/diff_drive_controller.egg-info/SOURCES.txt'
+[5.790s] reading manifest file 'build/diff_drive_controller/diff_drive_controller.egg-info/SOURCES.txt'
+[5.793s] writing manifest file 'build/diff_drive_controller/diff_drive_controller.egg-info/SOURCES.txt'
+[5.793s] running build
+[5.794s] running build_py
+[5.795s] creating /home/tristan/ros2_ws/src/diff_drive_controller/build/diff_drive_controller/build
+[5.796s] creating /home/tristan/ros2_ws/src/diff_drive_controller/build/diff_drive_controller/build/lib
+[5.798s] creating /home/tristan/ros2_ws/src/diff_drive_controller/build/diff_drive_controller/build/lib/diff_drive_controller
+[5.799s] copying diff_drive_controller/__init__.py -> /home/tristan/ros2_ws/src/diff_drive_controller/build/diff_drive_controller/build/lib/diff_drive_controller
+[5.800s] copying diff_drive_controller/diff_drive_controller.py -> /home/tristan/ros2_ws/src/diff_drive_controller/build/diff_drive_controller/build/lib/diff_drive_controller
+[5.800s] running install
+[5.817s] running install_lib
+[5.924s] creating /home/tristan/ros2_ws/src/diff_drive_controller/install/diff_drive_controller/lib/python3.12/site-packages/diff_drive_controller
+[5.925s] copying /home/tristan/ros2_ws/src/diff_drive_controller/build/diff_drive_controller/build/lib/diff_drive_controller/__init__.py -> /home/tristan/ros2_ws/src/diff_drive_controller/install/diff_drive_controller/lib/python3.12/site-packages/diff_drive_controller
+[5.927s] copying /home/tristan/ros2_ws/src/diff_drive_controller/build/diff_drive_controller/build/lib/diff_drive_controller/diff_drive_controller.py -> /home/tristan/ros2_ws/src/diff_drive_controller/install/diff_drive_controller/lib/python3.12/site-packages/diff_drive_controller
+[5.929s] byte-compiling /home/tristan/ros2_ws/src/diff_drive_controller/install/diff_drive_controller/lib/python3.12/site-packages/diff_drive_controller/__init__.py to __init__.cpython-312.pyc
+[5.931s] byte-compiling /home/tristan/ros2_ws/src/diff_drive_controller/install/diff_drive_controller/lib/python3.12/site-packages/diff_drive_controller/diff_drive_controller.py to diff_drive_controller.cpython-312.pyc
+[5.940s] running install_data
+[5.940s] creating /home/tristan/ros2_ws/src/diff_drive_controller/install/diff_drive_controller/share/ament_index
+[5.941s] creating /home/tristan/ros2_ws/src/diff_drive_controller/install/diff_drive_controller/share/ament_index/resource_index
+[5.941s] creating /home/tristan/ros2_ws/src/diff_drive_controller/install/diff_drive_controller/share/ament_index/resource_index/packages
+[5.941s] copying resource/diff_drive_controller -> /home/tristan/ros2_ws/src/diff_drive_controller/install/diff_drive_controller/share/ament_index/resource_index/packages
+[5.941s] copying package.xml -> /home/tristan/ros2_ws/src/diff_drive_controller/install/diff_drive_controller/share/diff_drive_controller
+[5.942s] creating /home/tristan/ros2_ws/src/diff_drive_controller/install/diff_drive_controller/share/diff_drive_controller/launch
+[5.942s] copying launch/diff_drive_controller.launch.py -> /home/tristan/ros2_ws/src/diff_drive_controller/install/diff_drive_controller/share/diff_drive_controller/launch
+[5.942s] running install_egg_info
+[6.010s] Copying build/diff_drive_controller/diff_drive_controller.egg-info to /home/tristan/ros2_ws/src/diff_drive_controller/install/diff_drive_controller/lib/python3.12/site-packages/diff_drive_controller-0.0.1-py3.12.egg-info
+[6.013s] running install_scripts
+[6.428s] Installing diff_drive_controller script to /home/tristan/ros2_ws/src/diff_drive_controller/install/diff_drive_controller/bin
+[6.430s] writing list of installed files to '/home/tristan/ros2_ws/src/diff_drive_controller/build/diff_drive_controller/install.log'
+[6.596s] Invoked command in '/home/tristan/ros2_ws/src/diff_drive_controller' returned '0': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/tristan/ros2_ws/src/diff_drive_controller/build/diff_drive_controller/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/tristan/ros2_ws/src/diff_drive_controller/install/diff_drive_controller/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base build/diff_drive_controller build --build-base /home/tristan/ros2_ws/src/diff_drive_controller/build/diff_drive_controller/build install --record /home/tristan/ros2_ws/src/diff_drive_controller/build/diff_drive_controller/install.log --single-version-externally-managed install_data
