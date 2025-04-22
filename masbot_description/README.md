@@ -39,7 +39,7 @@ masbot_description/
 - ONN camera mounted above the lidar
 - LCD screen in portrait orientation
 - Ultrasonic sensors mounted at 26cm height
-
+ 
 ## Building the Package
 
 1. Clone this repository into your ROS2 workspace:

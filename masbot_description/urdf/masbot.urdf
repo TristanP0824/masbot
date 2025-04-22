@@ -295,7 +295,7 @@
   <joint name="lidar_joint" type="fixed">
     <parent link="mast_top"/>
     <child link="lidar_link"/>
-    <origin xyz="0 0 0.02" rpy="0 0 0"/>
+    <origin xyz="0 0 0.055" rpy="0 0 0"/>
   </joint>
 
   <!-- Camera just above the lidar -->
@@ -310,9 +310,9 @@
   <joint name="camera_joint" type="fixed">
     <parent link="mast_top"/>
     <child link="camera_link"/>
-    <origin xyz="0 0 0.055" rpy="0 0 0"/>
+    <origin xyz="0 0 0.02" rpy="0 0 0"/>
   </joint>
-
+3   
   <!-- LCD Screen in portrait orientation -->
   <link name="lcd_screen_link">
     <visual>
@@ -328,20 +328,6 @@
     <origin xyz="0.05 0 -0.1" rpy="0 0 0"/>
   </joint>
 
-  <!-- IMU Link (MPU6050) at the center of the base -->
-  <link name="imu_link">
-    <visual>
-      <geometry>
-        <box size="0.02 0.02 0.005"/>
-      </geometry>
-      <material name="blue"/>
-    </visual>
-  </link>
-  <joint name="imu_joint" type="fixed">
-    <parent link="base_link"/>
-    <child link="imu_link"/>
-    <origin xyz="0 0 -0.01" rpy="0 0 0"/>
-  </joint>
 
   <!-- Gazebo plugins would be configured here -->
 </robot>
