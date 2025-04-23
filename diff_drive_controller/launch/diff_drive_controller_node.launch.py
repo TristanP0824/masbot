@@ -54,7 +54,8 @@ def generate_launch_description():
     
     # Create the differential drive controller node
     diff_drive_node = Node(
-        executable='/home/tristan/ros2_ws/src/diff_drive_controller_node.py',
+        package='diff_drive_controller',
+        executable='diff_drive_controller_node',
         name='diff_drive_controller',
         output='screen',
         parameters=[{
