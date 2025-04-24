@@ -30,7 +30,14 @@
   <depend>nav_msgs</depend>
   <depend>xacro</depend>
   <depend>urdf</depend>
-  <depend>mpu6050_driver</depend>
+ <!-- Add these dependencies for the diff_drive_controller -->
+<depend>rclpy</depend>
+<depend>geometry_msgs</depend>
+<depend>nav_msgs</depend>
+<depend>tf2_ros</depend>
+<depend>tf_transformations</depend>
+<!-- Remove MPU6050 dependency if it exists -->
+<!--<depend>mpu6050_driver</depend>-->
   <!-- For hardware interface -->
   <depend>controller_interface</depend>
   <depend>joint_state_broadcaster</depend>

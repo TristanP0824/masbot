@@ -81,6 +81,13 @@ install(
   DESTINATION share/${PROJECT_NAME}
 )
 
+# Install Python scripts
+install(
+  PROGRAMS
+    scripts/diff_drive_controller.py
+  DESTINATION lib/${PROJECT_NAME}
+)
+
 # Export dependencies
 ament_export_include_directories(include)
 ament_export_libraries(masbot_hardware_interface)

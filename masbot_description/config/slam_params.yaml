@@ -1,0 +1,57 @@
+slam_toolbox:
+  ros__parameters:
+    # Robot frame setup
+    odom_frame: odom
+    map_frame: map
+    base_frame: base_link
+    scan_topic: /scan
+
+    # SLAM settings
+    mode: mapping  # mapping or localization
+    use_sim_time: false
+    map_update_interval: 5.0  # seconds
+    resolution: 0.05  # Map resolution in meters
+    max_laser_range: 12.0  # Max range of RPLidar A1 in meters
+    minimum_time_interval: 0.5  # Seconds
+    transform_timeout: 0.2  # Seconds
+    
+    # Scan matcher settings
+    map_start_pose: [0.0, 0.0, 0.0]  # x, y, theta
+    map_start_at_dock: true
+    
+    # Loop closure settings
+    enable_interactive_mode: true  # Allow loop closure through interactive markers
+    
+    # Advanced parameters
+    use_pose_extrapolator: true
+    scan_buffer_size: 10
+    scan_buffer_maximum_scan_distance: 10.0
+    link_match_minimum_response_fine: 0.1
+    link_scan_maximum_distance: 1.5
+    loop_search_maximum_distance: 3.0
+    do_loop_closing: true
+    loop_match_minimum_chain_size: 10
+    loop_match_maximum_variance_coarse: 3.0
+    loop_match_minimum_response_coarse: 0.35
+    loop_match_minimum_response_fine: 0.45
+    
+    # Correlation parameters - Correlation Parameters
+    correlation_search_space_dimension: 0.5
+    correlation_search_space_resolution: 0.01
+    correlation_search_space_smear_deviation: 0.1
+    
+    # Correlation Parameters - Loop Closure Parameters
+    loop_search_space_dimension: 8.0
+    loop_search_space_resolution: 0.05
+    loop_search_space_smear_deviation: 0.03
+    
+    # Scan Matcher Parameters
+    distance_variance_penalty: 0.5
+    angle_variance_penalty: 1.0
+    
+    fine_search_angle_offset: 0.00349  # ~0.2 degrees
+    coarse_search_angle_offset: 0.349  # ~20 degrees
+    coarse_angle_resolution: 0.0349  # ~2 degrees
+    minimum_angle_penalty: 0.9
+    minimum_distance_penalty: 0.5
+    use_response_expansion: true

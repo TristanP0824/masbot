@@ -235,49 +235,6 @@
     <origin xyz="0 0 0.54" rpy="0 0 0"/>
   </joint>
 
-  <!-- Ultrasonic Sensors at 26cm height, positioned around the robot -->
-  <link name="ultrasonic_front_link">
-    <visual>
-      <geometry>
-        <box size="0.04 0.02 0.02"/>
-      </geometry>
-      <material name="blue"/>
-    </visual>
-  </link>
-  <joint name="ultrasonic_front_joint" type="fixed">
-    <parent link="mast_mid"/>
-    <child link="ultrasonic_front_link"/>
-    <origin xyz="0.05 0 0" rpy="0 0 0"/>
-  </joint>
-
-  <link name="ultrasonic_left_link">
-    <visual>
-      <geometry>
-        <box size="0.02 0.04 0.02"/>
-      </geometry>
-      <material name="blue"/>
-    </visual>
-  </link>
-  <joint name="ultrasonic_left_joint" type="fixed">
-    <parent link="mast_mid"/>
-    <child link="ultrasonic_left_link"/>
-    <origin xyz="0 0.05 0" rpy="0 0 0"/>
-  </joint>
-
-  <link name="ultrasonic_right_link">
-    <visual>
-      <geometry>
-        <box size="0.02 0.04 0.02"/>
-      </geometry>
-      <material name="blue"/>
-    </visual>
-  </link>
-  <joint name="ultrasonic_right_joint" type="fixed">
-    <parent link="mast_mid"/>
-    <child link="ultrasonic_right_link"/>
-    <origin xyz="0 -0.05 0" rpy="0 0 0"/>
-  </joint>
-
   <!-- RPLidar at the top of the mast -->
   <link name="lidar_link">
     <visual>
@@ -297,21 +254,6 @@
     <child link="lidar_link"/>
     <origin xyz="0 0 0.055" rpy="0 0 0"/>
   </joint>
-
-  <!-- Camera just above the lidar -->
-  <link name="camera_link">
-    <visual>
-      <geometry>
-        <box size="0.03 0.08 0.03"/>
-      </geometry>
-      <material name="black"/>
-    </visual>
-  </link>
-  <joint name="camera_joint" type="fixed">
-    <parent link="mast_top"/>
-    <child link="camera_link"/>
-    <origin xyz="0 0 0.02" rpy="0 0 0"/>
-  </joint>
 3   
   <!-- LCD Screen in portrait orientation -->
   <link name="lcd_screen_link">
@@ -327,7 +269,6 @@
     <child link="lcd_screen_link"/>
     <origin xyz="0.05 0 -0.1" rpy="0 0 0"/>
   </joint>
-
 
   <!-- Gazebo plugins would be configured here -->
 </robot>

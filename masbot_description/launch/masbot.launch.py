@@ -86,7 +86,7 @@ def generate_launch_description():
         }],
         output='screen',
     )
-    '''
+    
     # Camera node
     camera_node = Node(
         package='v4l2_camera',
@@ -102,6 +102,7 @@ def generate_launch_description():
         }],
         output='screen',
     )
+    '''
     
     # Differential drive controller
     diff_drive_controller_node = Node(
@@ -127,7 +128,7 @@ def generate_launch_description():
         map_to_odom,
         rplidar_node,
         #imu_node,  # Uncomment if using IMU
-        camera_node,
+        #camera_node,
         diff_drive_controller_node,
         joint_state_broadcaster_node
     ])
